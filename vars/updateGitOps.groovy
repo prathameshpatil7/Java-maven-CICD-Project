@@ -1,4 +1,4 @@
-def call(String branch , String repoUrl , String gitopsCred, String imageName, String buildNumber, String branch, String projectUrl){
+def call(String branch , String repoUrl , String gitopsCred, String imageName, String buildNumber, String projectUrl){
   dir('gitops-repo'){
     git branch: branch, url: repoUrl, credentialsId: gitopsCred
     sh "sed -i 's|image: .*|image: ${imageName}:${buildNumber}|g' deployment.yaml"
